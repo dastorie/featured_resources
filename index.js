@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const morgan = require("morgan");
 const apicache = require("apicache");
+const cors = require('cors');
 
 require('dotenv').config();
 
@@ -16,9 +17,11 @@ app.use(express.json());
 app.use(morgan('dev'));
 let cache = apicache.middleware
 
+//cors
+app.use(cors())
   
-//caching all routes for 5 minutes
-app.use(cache('600 minutes'))
+//caching all routes
+app.use(cache('60 minutes'))
 
 // Endpoint to retrieve data from baserow.io and publish it as JSON API
 app.get('/', async (req, res) => {
