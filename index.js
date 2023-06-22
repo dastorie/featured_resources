@@ -21,7 +21,7 @@ let cache = apicache.middleware
 app.use(cors())
   
 //caching all routes
-app.use(cache('60 minutes'))
+app.use(cache('2 minutes'))
 
 // Endpoint to retrieve data from baserow.io and publish it as JSON API
 app.get('/', async (req, res) => {
@@ -44,9 +44,11 @@ app.get('/', async (req, res) => {
         url = row.url
       }
       if (row.imageFile.length > 0) {
-        image = row['imageFile'][0].thumbnails.card_cover.url
-      } else {
+        image = row['imageFile'][0].url
+      } else if (row.imageLink) {
         image = row.imageLink
+      } else {
+        image = 'https://ourspace.uregina.ca/maryfiler/img/archerlogo2.png'
       }
 
       return {
