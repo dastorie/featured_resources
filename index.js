@@ -27,7 +27,7 @@ app.use(cache('2 minutes'))
 app.get('/', async (req, res) => {
   try {
     // Make a request to the baserow.io API to get the data
-    const response = await axios.get(`https://api.baserow.io/api/database/rows/table/169912/?user_field_names=true&filter__field_1130032__boolean=true`, {
+    const response = await axios.get(`https://api.baserow.io/api/database/rows/table/182142/?user_field_names=true&filter__field_1221942__boolean=true`, {
       headers: {
         Authorization: `Token ${apikey}`,
       },
@@ -48,7 +48,7 @@ app.get('/', async (req, res) => {
       } else if (row.imageLink) {
         image = row.imageLink
       } else {
-        image = 'https://ourspace.uregina.ca/maryfiler/img/archerlogo2.png'
+        image = 'https://libapps-ca.s3.amazonaws.com/customers/5353/images/cawood_archer_springtime_opt.jpeg'
       }
 
       return {
