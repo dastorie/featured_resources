@@ -21,7 +21,7 @@ let cache = apicache.middleware
 app.use(cors())
   
 //caching all routes
-app.use(cache('15 minutes'))
+app.use(cache('1 hour'))
 
 // Endpoint to retrieve data from baserow.io and publish it as JSON API
 app.get('/', async (req, res) => {
